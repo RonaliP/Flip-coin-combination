@@ -74,3 +74,65 @@ echo "th percentage is $thp%"
 echo "tt percentage is $ttp%"
 
 echo "_________________________"
+hhh=0
+hht=0
+hth=0
+htt=0
+thh=0
+tht=0
+tth=0
+ttt=0
+
+for((i=1;i<=$n;i++))
+do
+     flip1=$((RANDOM%2))
+     flip2=$((RANDOM%2))
+     flip3=$((RANDOM%2))
+     triplet[$i]=$flip1$flip2$flip3
+
+     if [ $flip1 -eq 1 -a $flip2 -eq 1 -a $flip3 -eq 1 ]
+     then
+        hhh=$(($hhh+1))
+     elif [ $flip1 -eq 1 -a $flip2 -eq 1 -a $flip3 -eq 0 ]
+     then
+        hht=$(($hht+1))
+      elif [ $flip1 -eq 0 -a $flip2 -eq 0 -a $flip3 -eq 1 ]
+     then
+        hth=$(($hth+1))
+     elif [ $flip1 -eq 1 -a $flip2 -eq 0 -a $flip3 -eq 0 ]
+     then
+        htt=$(($htt+1))
+     elif [ $flip1 -eq 0 -a $flip2 -eq 1 -a $flip3 -eq 1 ]
+     then
+        thh=$(($thh+1))
+     elif [ $flip1 -eq 0 -a $flip2 -eq 1 -a $flip3 -eq 0 ]
+     then
+        tht=$(($tht+1))
+      elif [ $flip1 -eq 0 -a $flip2 -eq 0 -a $flip3 -eq 1 ]
+     then
+        tth=$(($tth+1))
+     elif [ $flip1 -eq 0 -a $flip2 -eq 0 -a $flip3 -eq 0 ]
+     then
+        ttt=$(($ttt+1))
+
+
+     fi
+done
+echo ${triplet[@]}
+hhhp=$(((hhh*100)/$n))
+hhtp=$(((hht*100)/$n))
+hthp=$(((hth*100)/$n))
+http=$(((htt*100)/$n))
+thhp=$(((thh*100)/$n))
+thtp=$(((tht*100)/$n))
+tthp=$(((tth*100)/$n))
+tttp=$(((ttt*100)/$n))
+
+echo "hhh percentage is $hhhp%"
+echo "hht percentage is $hhtp%"
+echo "hth percentage is $hthp%"
+echo "htt percentage is $http%"
+echo "thh percentage is $thhp%"
+echo "tht percentage is $thtp%"
+echo "tth percentage is $tthp%"
+echo "ttt percentage is $tttp%"
