@@ -1,3 +1,4 @@
+#!/bin/bash
 
 echo "WELCOME TO FLIP COMBINATION SIMULATION"
 
@@ -136,3 +137,66 @@ echo "thh percentage is $thhp%"
 echo "tht percentage is $thtp%"
 echo "tth percentage is $tthp%"
 echo "ttt percentage is $tttp%"
+
+echo "___________________________"
+
+for((i=1;i<=${#singlet[@]};i++))
+do
+	for((j=$i;j<=${#singlet[@]};j++))
+	do
+	if [ ${singlet[$j]} -lt ${singlet[$i]} ]
+	then
+		temp=${singlet[$i]}
+		singlet[$i]=${singlet[$j]}
+		singlet[$j]=$temp
+	fi
+	done
+done
+
+echo "SORTED SINGLET DICTIONARY IS" ${singlet[@]}
+
+
+
+for((i=1;i<=${#doublet[@]};i++))
+do
+	for((j=$i;j<=${#doublet[@]};j++))
+	do
+		if [ ${doublet[$j]} -lt ${doublet[$i]} ]
+		then
+		temp=${doublet[$i]}
+		doublet[$i]=${doublet[$j]}
+		doublet[$j]=$temp
+		fi
+	done
+done
+
+echo "SORTED DOUBLET DICTIONARY IS" ${doublet[@]}
+
+
+max=1
+p=${triplet[1]}
+count=1
+
+for((i=1;i<=${#triplet[@]};i++))
+do
+        for((j=$i;j<=${#triplet[@]};j++))
+        do
+                if [ ${triplet[$j]} -lt ${triplet[$i]} ]
+                then
+                temp=${triplet[$i]}
+                triplet[$i]=${triplet[$j]}
+                triplet[$j]=$temp
+                fi
+        done
+#if [ ${triplet[$i]} -eq ${triplet[$(($i+1))]} ]
+#then
+#	count=$(($count+1))
+#elif [ $count -gt $max ]
+#then
+#	max=$count
+#	p = ${triplet[$(($i+1))]}
+#fi
+done
+
+echo "SORTED TRIPLET DICTIONARY IS" ${triplet[@]}
+#echo "MOST REPEATED ELEMENT IS $p"
