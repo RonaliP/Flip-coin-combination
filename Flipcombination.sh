@@ -32,3 +32,45 @@ hp=$(((heads*100)/$n))
 tp=$(((tails*100)/$n))
 echo "HEAD PERCENTAGE IS $hp% "
 echo "TAIL PERCENTAGE IS $tp%"
+echo "_________________________"
+hh=0
+ht=0
+th=0
+tt=0
+for((i=1;i<=$n;i++))
+do
+     flip1=$((RANDOM%2))
+     flip2=$((RANDOM%2))
+     doublet[$i]=$flip1$flip2
+     if [ $flip1 -eq 1 -a $flip2 -eq 1 ]
+     then
+        hh=$(($hh+1))
+     elif [ $flip1 -eq 1 -a $flip2 -eq 0 ]
+     then
+        ht=$(($ht+1))
+      elif [ $flip1 -eq 0 -a $flip2 -eq 1 ]
+     then
+        th=$(($th+1))
+     elif [ $flip1 -eq 0 -a $flip2 -eq 0 ]
+     then
+        tt=$(($tt+1))
+
+     fi
+done
+echo ${doublet[@]}
+hhp=$(((hh*100)/$n))
+htp=$(((ht*100)/$n))
+thp=$(((th*100)/$n))
+ttp=$(((tt*100)/$n))
+
+echo "ALL HEADS hh=$hh "
+echo "HEAD and TAIL ht=$ht "
+echo "TAIL AND HEAD th=$th "
+echo "TAIL and TAIL tt=$tt "
+
+echo "hh percentage is $hhp%"
+echo "ht percentage is $htp%"
+echo "th percentage is $thp%"
+echo "tt percentage is $ttp%"
+
+echo "_________________________"
